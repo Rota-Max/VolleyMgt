@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import reactLogo from '../../images/react-logo.svg';
 import rekitLogo from '../../images/rekit-logo.svg';
 import * as actions from './redux/actions';
+//import soggetto from 'Components/Soggetto';
 
 export class DefaultPage extends Component {
   static propTypes = {
@@ -19,7 +20,7 @@ export class DefaultPage extends Component {
         <header className="app-header">
           <img src={reactLogo} className="app-logo" alt="logo" />
           <img src={rekitLogo} className="rekit-logo" alt="logo" />
-          <h1 className="app-title">Welcome to React</h1>
+          <h1 className="app-title">Volley Management</h1>
         </header>
         <div className="app-intro">
           <h3>To get started:</h3>
@@ -46,10 +47,7 @@ export class DefaultPage extends Component {
               </a>{' '}
               for the root container layout.
             </li>
-            <li>
-              To see examples, access:&nbsp;
-              <Link to="/examples">/examples</Link>
-            </li>
+           
             <li>
               Rekit Studio is running at:&nbsp;
               <a href="http://localhost:6076/" target="_blank" rel="noopener noreferrer">
