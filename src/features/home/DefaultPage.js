@@ -6,15 +6,19 @@ import { Link } from 'react-router-dom';
 import reactLogo from '../../images/react-logo.svg';
 import rekitLogo from '../../images/rekit-logo.svg';
 import * as actions from './redux/actions';
-//import soggetto from 'Components/Soggetto';
+import Soggetto from './Soggetto';
 
 export class DefaultPage extends Component {
   static propTypes = {
     home: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
-  };
+ };
+
+
 
   render() {
+
+
     return (
       <div className="home-default-page">
         <header className="app-header">
@@ -26,6 +30,10 @@ export class DefaultPage extends Component {
           <h3>To get started:</h3>
           <ul>
             <li>
+            <ul>
+       
+            </ul>
+            <Soggetto />
               Edit component{' '}
               <a
                 href="http://localhost:6076/element/src%2Ffeatures%2Fhome%2FDefaultPage.js/code"
