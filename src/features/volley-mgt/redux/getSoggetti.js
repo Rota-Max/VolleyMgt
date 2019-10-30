@@ -12,8 +12,7 @@ function getData(){
 
       AWS.config.update({
           region: "eu-central-1",
-          accessKeyId: "AKIAZKDVM3WPUD4CTBVE",
-          secretAccessKey: "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"
+    
         });
 
       var docClient = new AWS.DynamoDB.DocumentClient();
