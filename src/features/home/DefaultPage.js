@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import rekitLogo from '../../images/rekit-logo.svg';
 import volleyLogo from '../../images/PCPVOlley.svg';
 import volleyLogoFluo from '../../images/PCPVOlleyFluo.svg';
-
+import SidePanel from './SidePanel';
+import CenterPanel from './CenterPanel';
 
 import * as actions from './redux/actions';
-import Soggetto from './Soggetto';
+
 
 export class DefaultPage extends Component {
   static propTypes = {
@@ -17,11 +18,6 @@ export class DefaultPage extends Component {
     actions: PropTypes.object.isRequired,
  };
 
-
- componentDidMount() {
-    this.props.actions.getSoggetti();
-
-  }   
 
   
   render() {
@@ -37,15 +33,8 @@ export class DefaultPage extends Component {
           
         </header>
         <div className="app-intro">
-          <h3>Polisportiva Caluschese Pallavolo</h3>
-           {this.props.home.soggettiList.map(item => (
-           
-            <Soggetto id={'DragSoggetto' + item.IdSoggetto}
-              cognome={item.Cognome} 
-                nome={item.Nome}
-                key={item.IdSoggetto}></Soggetto>
-           
-           ))}
+         <SidePanel/>
+         <CenterPanel/>
         </div>
       </div>
     );
