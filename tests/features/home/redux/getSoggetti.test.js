@@ -3,22 +3,22 @@ import thunk from 'redux-thunk';
 import nock from 'nock';
 
 import {
-  VOLLEY_MGT_GET_SOGGETTI_BEGIN,
-  VOLLEY_MGT_GET_SOGGETTI_SUCCESS,
-  VOLLEY_MGT_GET_SOGGETTI_FAILURE,
-  VOLLEY_MGT_GET_SOGGETTI_DISMISS_ERROR,
-} from '../../../../src/features/volley-mgt/redux/constants';
+  HOME_GET_SOGGETTI_BEGIN,
+  HOME_GET_SOGGETTI_SUCCESS,
+  HOME_GET_SOGGETTI_FAILURE,
+  HOME_GET_SOGGETTI_DISMISS_ERROR,
+} from '../../../../src/features/home/redux/constants';
 
 import {
   getSoggetti,
   dismissGetSoggettiError,
   reducer,
-} from '../../../../src/features/volley-mgt/redux/getSoggetti';
+} from '../../../../src/features/home/redux/getSoggetti';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('volley-mgt/redux/getSoggetti', () => {
+describe('home/redux/getSoggetti', () => {
   afterEach(() => {
     nock.cleanAll();
   });
@@ -29,8 +29,8 @@ describe('volley-mgt/redux/getSoggetti', () => {
     return store.dispatch(getSoggetti())
       .then(() => {
         const actions = store.getActions();
-        expect(actions[0]).toHaveProperty('type', VOLLEY_MGT_GET_SOGGETTI_BEGIN);
-        expect(actions[1]).toHaveProperty('type', VOLLEY_MGT_GET_SOGGETTI_SUCCESS);
+        expect(actions[0]).toHaveProperty('type', HOME_GET_SOGGETTI_BEGIN);
+        expect(actions[1]).toHaveProperty('type', HOME_GET_SOGGETTI_SUCCESS);
       });
   });
 
@@ -40,55 +40,55 @@ describe('volley-mgt/redux/getSoggetti', () => {
     return store.dispatch(getSoggetti({ error: true }))
       .catch(() => {
         const actions = store.getActions();
-        expect(actions[0]).toHaveProperty('type', VOLLEY_MGT_GET_SOGGETTI_BEGIN);
-        expect(actions[1]).toHaveProperty('type', VOLLEY_MGT_GET_SOGGETTI_FAILURE);
+        expect(actions[0]).toHaveProperty('type', HOME_GET_SOGGETTI_BEGIN);
+        expect(actions[1]).toHaveProperty('type', HOME_GET_SOGGETTI_FAILURE);
         expect(actions[1]).toHaveProperty('data.error', expect.anything());
       });
   });
 
   it('returns correct action by dismissGetSoggettiError', () => {
     const expectedAction = {
-      type: VOLLEY_MGT_GET_SOGGETTI_DISMISS_ERROR,
+      type: HOME_GET_SOGGETTI_DISMISS_ERROR,
     };
     expect(dismissGetSoggettiError()).toEqual(expectedAction);
   });
 
-  it('handles action type VOLLEY_MGT_GET_SOGGETTI_BEGIN correctly', () => {
+  it('handles action type HOME_GET_SOGGETTI_BEGIN correctly', () => {
     const prevState = { getSoggettiPending: false };
     const state = reducer(
       prevState,
-      { type: VOLLEY_MGT_GET_SOGGETTI_BEGIN }
+      { type: HOME_GET_SOGGETTI_BEGIN }
     );
     expect(state).not.toBe(prevState); // should be immutable
     expect(state.getSoggettiPending).toBe(true);
   });
 
-  it('handles action type VOLLEY_MGT_GET_SOGGETTI_SUCCESS correctly', () => {
+  it('handles action type HOME_GET_SOGGETTI_SUCCESS correctly', () => {
     const prevState = { getSoggettiPending: true };
     const state = reducer(
       prevState,
-      { type: VOLLEY_MGT_GET_SOGGETTI_SUCCESS, data: {} }
+      { type: HOME_GET_SOGGETTI_SUCCESS, data: {} }
     );
     expect(state).not.toBe(prevState); // should be immutable
     expect(state.getSoggettiPending).toBe(false);
   });
 
-  it('handles action type VOLLEY_MGT_GET_SOGGETTI_FAILURE correctly', () => {
+  it('handles action type HOME_GET_SOGGETTI_FAILURE correctly', () => {
     const prevState = { getSoggettiPending: true };
     const state = reducer(
       prevState,
-      { type: VOLLEY_MGT_GET_SOGGETTI_FAILURE, data: { error: new Error('some error') } }
+      { type: HOME_GET_SOGGETTI_FAILURE, data: { error: new Error('some error') } }
     );
     expect(state).not.toBe(prevState); // should be immutable
     expect(state.getSoggettiPending).toBe(false);
     expect(state.getSoggettiError).toEqual(expect.anything());
   });
 
-  it('handles action type VOLLEY_MGT_GET_SOGGETTI_DISMISS_ERROR correctly', () => {
+  it('handles action type HOME_GET_SOGGETTI_DISMISS_ERROR correctly', () => {
     const prevState = { getSoggettiError: new Error('some error') };
     const state = reducer(
       prevState,
-      { type: VOLLEY_MGT_GET_SOGGETTI_DISMISS_ERROR }
+      { type: HOME_GET_SOGGETTI_DISMISS_ERROR }
     );
     expect(state).not.toBe(prevState); // should be immutable
     expect(state.getSoggettiError).toBe(null);

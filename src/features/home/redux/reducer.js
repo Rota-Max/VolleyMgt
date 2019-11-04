@@ -1,6 +1,8 @@
 import initialState from './initialState';
+import { reducer as getSoggettiReducer } from './getSoggetti';
 
 const reducers = [
+  getSoggettiReducer,
 ];
 
 export default function reducer(state = initialState, action) {

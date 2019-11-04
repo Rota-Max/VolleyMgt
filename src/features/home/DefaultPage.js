@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import reactLogo from '../../images/react-logo.svg';
 import rekitLogo from '../../images/rekit-logo.svg';
+import volleyLogo from '../../images/PCPVOlley.svg';
+import volleyLogoFluo from '../../images/PCPVOlleyFluo.svg';
+
+
 import * as actions from './redux/actions';
 import Soggetto from './Soggetto';
 
@@ -15,54 +18,34 @@ export class DefaultPage extends Component {
  };
 
 
+ componentDidMount() {
+    this.props.actions.getSoggetti();
 
+  }   
+
+  
   render() {
 
 
     return (
       <div className="home-default-page">
         <header className="app-header">
-          <img src={reactLogo} className="app-logo" alt="logo" />
+          <img src={volleyLogo} className="app-logo" alt="logo" />
+          <img src={volleyLogoFluo} className="app-logo-fluo" alt="logo-Fluo"  />
           <img src={rekitLogo} className="rekit-logo" alt="logo" />
           <h1 className="app-title">Volley Management</h1>
+          
         </header>
         <div className="app-intro">
-          <h3>To get started:</h3>
-          <ul>
-            <li>
-            <ul>
-       
-            </ul>
-            <Soggetto />
-              Edit component{' '}
-              <a
-                href="http://localhost:6076/element/src%2Ffeatures%2Fhome%2FDefaultPage.js/code"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                src/features/home/DefaultPage.js
-              </a>{' '}
-              for this page.
-            </li>
-            <li>
-              Edit component{' '}
-              <a
-                href="http://localhost:6076/element/src%2Ffeatures%2Fhome%2FApp.js/code"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                src/features/home/App.js
-              </a>{' '}
-              for the root container layout.
-            </li>
+          <h3>Polisportiva Caluschese Pallavolo</h3>
+           {this.props.home.soggettiList.map(item => (
            
-            <li>
-              Rekit Studio is running at:&nbsp;
-              <a href="http://localhost:6076/" target="_blank" rel="noopener noreferrer">
-                http://localhost:6076/
-              </a>.
-            </li>
-          </ul>
+            <Soggetto id={'DragSoggetto' + item.IdSoggetto}
+              cognome={item.Cognome} 
+                nome={item.Nome}
+                key={item.IdSoggetto}></Soggetto>
+           
+           ))}
         </div>
       </div>
     );

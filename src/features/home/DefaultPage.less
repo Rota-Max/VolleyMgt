@@ -7,9 +7,19 @@
   }
 
   .app-logo {
-    animation: app-logo-spin infinite 10s linear;
+    transform: scaleX(-1);
+    position: absolute;
+    animation: app-logo-spin infinite 2s cubic-bezier(.4,0.05,.7,.4) alternate-reverse;
     height: 80px;
   }
+
+   .app-logo-fluo {
+    position: absolute;
+    animation: app-logo-spin-fluo infinite 2.5s cubic-bezier(.4,0.04,.7,.4) alternate-reverse;
+    height: 80px;
+    
+  }
+
 
   .rekit-logo {
     position: absolute;
@@ -21,13 +31,15 @@
 
   .app-header {
     background-color: #222;
+    width: 100%;
     height: 150px;
     padding: 20px;
     color: white;
     overflow: hidden;
     position: relative;
+    margin: 1em auto;
   }
-
+  
   .app-title {
     font-size: 1.5em;
   }
@@ -66,12 +78,23 @@
     margin: auto;
   }
 
+
   @keyframes app-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  
+       from { transform: translate3d(150px, 0, 0);
+               }
+      to   { transform: translate3d(150px, 100px,0); 
+              }
+    
+   
   }
+ @keyframes app-logo-spin-fluo {
+  
+       from { transform: translate3d(-250px, 0, 0);     }
+      to   { transform: translate3d(-250px, 100px, 0); }
+    
+   
+  }
+ 
+
 }

@@ -1,53 +1,17 @@
+import axios from 'axios';
 import {
-  VOLLEY_MGT_GET_SOGGETTI_BEGIN,
-  VOLLEY_MGT_GET_SOGGETTI_SUCCESS,
-  VOLLEY_MGT_GET_SOGGETTI_FAILURE,
-  VOLLEY_MGT_GET_SOGGETTI_DISMISS_ERROR,
+  HOME_GET_SOGGETTI_BEGIN,
+  HOME_GET_SOGGETTI_SUCCESS,
+  HOME_GET_SOGGETTI_FAILURE,
+  HOME_GET_SOGGETTI_DISMISS_ERROR,
 } from './constants';
-
-
-function getData(){
-      var doRequest = undefined;
-       var AWS = require("aws-sdk");
-
-      AWS.config.update({
-          region: "eu-central-1",
-    
-        });
-
-      var docClient = new AWS.DynamoDB.DocumentClient();
-
-      var table = "Soggetto";
-      var params = {
-          TableName: table,
-          Key: {"IdSoggetto": 1}
-      };
-
- 
-      docClient.get(params, function(err, data) {
-          if (err) {
-              console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
-              doRequest = err;
-          } 
-          else
-          {
-             // console.log("", JSON.stringify(data, null, 2));
-             // console.log("", JSON.stringify(data.Item, null, 2));
-              doRequest = data;
-          }
-      })
-
-     return doRequest;
-     
-};
-
 
 // Rekit uses redux-thunk for async actions by default: https://github.com/gaearon/redux-thunk
 // If you prefer redux-saga, you can use rekit-plugin-redux-saga: https://github.com/supnate/rekit-plugin-redux-saga
 export function getSoggetti(args = {}) {
   return (dispatch) => { // optionally you can have getState as the second argument
     dispatch({
-      type: VOLLEY_MGT_GET_SOGGETTI_BEGIN,
+      type: HOME_GET_SOGGETTI_BEGIN,
     });
 
     // Return a promise so that you could control UI flow without states in the store.
@@ -58,28 +22,25 @@ export function getSoggetti(args = {}) {
       // doRequest is a placeholder Promise. You should replace it with your own logic.
       // See the real-word example at:  https://github.com/supnate/rekit/blob/master/src/features/home/redux/fetchRedditReactjsList.js
       // args.error here is only for test coverage purpose.
-      // const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
-
-      const doRequest =args.error ? Promise.reject(new Error()) : getData();
-  
-        doRequest.then(
-          (data) => {
-            dispatch({
-              type: VOLLEY_MGT_GET_SOGGETTI_SUCCESS,
-              data: data,
-            });
-            resolve(data);
-          },
-          // Use rejectHandler as the second argument so that render errors won't be caught.
-          (err) => {
-            dispatch({
-              type: VOLLEY_MGT_GET_SOGGETTI_FAILURE,
-              data: { error: err },
-            });
-            reject(err);
-          },
-        );
-     
+      //const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
+       const doRequest = axios.get('https://fixpywiyb9.execute-api.eu-central-1.amazonaws.com/Beta/soggetti');
+      doRequest.then(
+        (res) => {
+          dispatch({
+            type: HOME_GET_SOGGETTI_SUCCESS,
+            data: res.data,
+          });
+          resolve(res);
+        },
+        // Use rejectHandler as the second argument so that render errors won't be caught.
+        (err) => {
+          dispatch({
+            type: HOME_GET_SOGGETTI_FAILURE,
+            data: { error: err },
+          });
+          reject(err);
+        },
+      );
     });
 
     return promise;
@@ -90,13 +51,13 @@ export function getSoggetti(args = {}) {
 // If you don't want errors to be saved in Redux store, just ignore this method.
 export function dismissGetSoggettiError() {
   return {
-    type: VOLLEY_MGT_GET_SOGGETTI_DISMISS_ERROR,
+    type: HOME_GET_SOGGETTI_DISMISS_ERROR,
   };
 }
 
 export function reducer(state, action) {
   switch (action.type) {
-    case VOLLEY_MGT_GET_SOGGETTI_BEGIN:
+    case HOME_GET_SOGGETTI_BEGIN:
       // Just after a request is sent
       return {
         ...state,
@@ -104,15 +65,16 @@ export function reducer(state, action) {
         getSoggettiError: null,
       };
 
-    case VOLLEY_MGT_GET_SOGGETTI_SUCCESS:
+    case HOME_GET_SOGGETTI_SUCCESS:
       // The request is success
       return {
         ...state,
         getSoggettiPending: false,
         getSoggettiError: null,
+        soggettiList: action.data,
       };
 
-    case VOLLEY_MGT_GET_SOGGETTI_FAILURE:
+    case HOME_GET_SOGGETTI_FAILURE:
       // The request is failed
       return {
         ...state,
@@ -120,7 +82,7 @@ export function reducer(state, action) {
         getSoggettiError: action.data.error,
       };
 
-    case VOLLEY_MGT_GET_SOGGETTI_DISMISS_ERROR:
+    case HOME_GET_SOGGETTI_DISMISS_ERROR:
       // Dismiss the request failure error
       return {
         ...state,
