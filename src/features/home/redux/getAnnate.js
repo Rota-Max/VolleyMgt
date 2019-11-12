@@ -22,12 +22,12 @@ export function getAnnate(args = {}) {
       // doRequest is a placeholder Promise. You should replace it with your own logic.
       // See the real-word example at:  https://github.com/supnate/rekit/blob/master/src/features/home/redux/fetchRedditReactjsList.js
       // args.error here is only for test coverage purpose.
-      const doRequest = axios.get('https://w68brtqqd7.execute-api.eu-central-1.amazonaws.com/beta');
+      const doRequest = axios.get('https://w68brtqqd7.execute-api.eu-central-1.amazonaws.com/beta/annate');
       doRequest.then(
         (res) => {
           dispatch({
             type: HOME_GET_ANNATE_SUCCESS,
-            data: res,
+            data: res.data,
           });
           resolve(res);
         },

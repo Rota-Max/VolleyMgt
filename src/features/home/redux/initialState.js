@@ -5,6 +5,7 @@ const initialState = {
   getSoggettiError: null,
   getAnnatePending: false,
   getAnnateError: null,
-};
+  listVMDDVisible: false,
+}
 
 export default initialState;
