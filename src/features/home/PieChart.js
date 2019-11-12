@@ -24,7 +24,7 @@ export class PieChart extends Component {
           height={'33%'}
           chartType="PieChart"
           loader={<div>Loading Chart</div>}
-          data={getPieData(this.props.IdSoggetto,this.props.home.statisticheList, this.props.setType)}
+          data={this.props.data}
           options={{
             title: this.props.title,
             is3D: true,
@@ -42,17 +42,36 @@ function getPieData(IdSoggetto,statistiche,Type){
 
     var filter = "IdSoggetto ="+IdSoggetto;
     var sArray = [['key','value']];
-    if (statistiche)
+    if (statistiche  && IdSoggetto)
     {
-      //eturn ['key','value'];
-      return statistiche;
-      //return [
-      //            ['Pizza', 'Popularity'],
-      //            ['Pepperoni', 4],
-      //            ['Hawaiian', 5],
-      //            ['Mushroom', 22],
-      //            ['Sausage', 10], 
-      //              ];
+
+       var newArray = [];
+
+       if (IdSoggetto != "0"){
+         newArray = statistiche.filter(function (el) {
+            return el.IdSoggetto == IdSoggetto ;
+          });
+       }
+       else
+       {
+         newArray = statistiche;
+       }
+
+        var APP = 0,AP= 0,AN =0,ANN=0;
+
+        newArray.forEach(function (arrayItem) {
+          APP = Number(arrayItem.APP) + APP;
+           AP = Number(arrayItem.AP) + AP;
+            AN = Number(arrayItem.APP) + AN;
+             ANN = Number(arrayItem.APP) + ANN;
+            
+        });
+
+        sArray.push(['APP',APP]);
+        sArray.push(['AP',AP]);
+        sArray.push(['AN',AN]);
+        sArray.push(['ANN',ANN]);
+
     }
     return sArray;
 }
