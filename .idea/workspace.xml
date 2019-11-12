@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc2e22d8-4a21-4573-bc21-08a289c152de" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/features/home/VmDropDown.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/features/home/VmDropDown.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/features/home/VmDropDown.test.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/CenterPanel.js" afterPath="$PROJECT_DIR$/src/features/home/CenterPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/DefaultPage.js" afterPath="$PROJECT_DIR$/src/features/home/DefaultPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/SidePanel.js" afterPath="$PROJECT_DIR$/src/features/home/SidePanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/SidePanel.less" afterPath="$PROJECT_DIR$/src/features/home/SidePanel.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/Soggetto.js" afterPath="$PROJECT_DIR$/src/features/home/Soggetto.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/index.js" afterPath="$PROJECT_DIR$/src/features/home/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/redux/actions.js" afterPath="$PROJECT_DIR$/src/features/home/redux/actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/redux/constants.js" afterPath="$PROJECT_DIR$/src/features/home/redux/constants.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/redux/initialState.js" afterPath="$PROJECT_DIR$/src/features/home/redux/initialState.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/redux/reducer.js" afterPath="$PROJECT_DIR$/src/features/home/redux/reducer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/features/home/style.less" afterPath="$PROJECT_DIR$/src/features/home/style.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
-    </list>
+    <list default="true" id="fc2e22d8-4a21-4573-bc21-08a289c152de" name="Default" comment="" />
     <ignored path="VolleyMgt.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -430,7 +413,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="0" width="1932" height="1056" extended-state="1" />
+    <frame x="-10" y="0" width="1932" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973601" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
