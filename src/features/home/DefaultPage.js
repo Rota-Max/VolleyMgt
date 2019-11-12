@@ -19,6 +19,9 @@ export class DefaultPage extends Component {
  };
 
 
+ componentDidMount() {
+    this.props.actions.getStatistic();
+  }   
   
   render() {
 

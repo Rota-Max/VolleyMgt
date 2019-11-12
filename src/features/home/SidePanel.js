@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
-import VmDropDown from './VmDropDown';
+import AllStatistic from './AllStatistic';
 
 export class SidePanel extends Component {
   static propTypes = {
@@ -19,7 +19,7 @@ export class SidePanel extends Component {
   render() {
     return (
       <div className="home-side-panel">
-         <VmDropDown list={this.props.home.annateList}  />
+          <AllStatistic/>
       </div>
     );
   }

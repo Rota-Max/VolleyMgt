@@ -1,19 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { VmDropDown } from '../../../src/features/home/VmDropDown';
+import { PieChart } from '../../../src/features/home/PieChart';
 
-describe('home/VmDropDown', () => {
+describe('home/PieChart', () => {
   it('renders node with correct class name', () => {
     const props = {
       home: {},
       actions: {},
     };
     const renderedComponent = shallow(
-      <VmDropDown {...props} />
+      <PieChart {...props} />
     );
 
     expect(
-      renderedComponent.find('.home-vm-drop-down').length
+      renderedComponent.find('.home-pie-chart').length
     ).toBe(1);
   });
 });

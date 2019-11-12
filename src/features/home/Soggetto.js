@@ -7,12 +7,13 @@ import Draggable from 'react-draggable';
 import AnimateHeight from 'react-animate-height';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown,faAngleUp } from '@fortawesome/free-solid-svg-icons'
+import PieChart from './PieChart';
 
 export class Soggetto extends Component {
   static propTypes = {
     home: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
-  };
+   };
 
 
 
@@ -48,7 +49,7 @@ export class Soggetto extends Component {
   render() {
   const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
   const { height,arrow } = this.state;
-  
+
 
     return (
   <Draggable  {...dragHandlers}>
@@ -63,7 +64,9 @@ export class Soggetto extends Component {
              duration= {500}
               height= { height }
         >
-          <p>Put as many React or HTML components here.</p>
+          <PieChart title="Attacco" IdSoggetto={this.props.key} setType="1"/>
+          <PieChart title="Ricezione" IdSoggetto={this.props.key} setType="2"/>
+          <PieChart title="Battuta" IdSoggetto={this.props.key} setType="3"/>
         </AnimateHeight>
       </div>
      </Draggable>
