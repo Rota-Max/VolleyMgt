@@ -11,15 +11,14 @@ export class SidePanel extends Component {
     actions: PropTypes.object.isRequired,
   };
 
- componentDidMount() {
+  componentDidMount() {
     this.props.actions.getAnnate();
-
-  }   
+  }
 
   render() {
     return (
       <div className="home-side-panel">
-          <AllStatistic/>
+        <AllStatistic AllData={this.props.home.statisticheList} />
       </div>
     );
   }
@@ -35,11 +34,8 @@ function mapStateToProps(state) {
 /* istanbul ignore next */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...actions }, dispatch)
+    actions: bindActionCreators({ ...actions }, dispatch),
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SidePanel);
+export default connect(mapStateToProps, mapDispatchToProps)(SidePanel);

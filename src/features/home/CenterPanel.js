@@ -11,13 +11,17 @@ export class CenterPanel extends Component {
     home: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
   };
-
+  
+  
 
  componentDidMount() {
     this.props.actions.getSoggetti();
   }   
 
   render() {
+
+    const allData = this.props.home.statisticheList;
+
     return (
       <div className="home-center-panel">
          <h3>Polisportiva Caluschese Pallavolo</h3>
@@ -26,7 +30,11 @@ export class CenterPanel extends Component {
             <Soggetto id={'DragSoggetto' + item.IdSoggetto}
                 cognome={item.Cognome} 
                 nome={item.Nome}
-                key={item.IdSoggetto}></Soggetto>
+                key={item.IdSoggetto}
+                AllData= {allData.filter(function (el) {
+                    return el.IdSoggetto === item.IdSoggetto ;
+                  })}
+                ></Soggetto>
            
            ))}
           

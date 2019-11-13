@@ -19,10 +19,10 @@ export class AllStatistic extends Component {
     let sArrayR = [['key','value']];
     let sArrayB = [['key','value']];
 
-     if (this.home.statisticheList  )
+     if (this.props && this.props.AllData)
     {
      
-        var newArray = this.props.statisticheList;
+        var newArray = this.props.AllData;
         var APP = 0,AP= 0,AN =0,ANN=0;
          var RPP = 0,RP= 0,RN =0,RNN=0;
           var BPP = 0,BP= 0,BN =0,BNN=0;
@@ -32,11 +32,11 @@ export class AllStatistic extends Component {
           AP = Number(arrayItem.AP) + AP;
           AN = Number(arrayItem.APP) + AN;
           ANN = Number(arrayItem.APP) + ANN;
-           RPP = Number(arrayItem.RPP) + RPP;
+          RPP = Number(arrayItem.RPP) + RPP;
           RP = Number(arrayItem.RP) + RP;
           RN = Number(arrayItem.RN) + RN;
           RNN = Number(arrayItem.RNN) + RNN;
-           BPP = Number(arrayItem.BPP) + BPP;
+          BPP = Number(arrayItem.BPP) + BPP;
           BP = Number(arrayItem.BP) + BP;
           BN = Number(arrayItem.BN) + BN;
           BNN = Number(arrayItem.BNN) + BNN;
@@ -48,9 +48,9 @@ export class AllStatistic extends Component {
         sArrayA.push(['Efficace',AP]);
         sArrayA.push(['Non Efficace',AN]);
         sArrayA.push(['Errore punto',ANN]);
-        sArrayR.push(['Punto',RPP]);
-        sArrayR.push(['Efficace',RP]);
-        sArrayR.push(['Non Efficace',RN]);
+        sArrayR.push(['Perfetta',RPP]);
+        sArrayR.push(['Ricostruita',RP]);
+        sArrayR.push(['Non Ricostruita',RN]);
         sArrayR.push(['Errore punto',RNN]);
         sArrayB.push(['Punto',BPP]);
         sArrayB.push(['Efficace',BP]);

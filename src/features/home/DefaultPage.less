@@ -2,6 +2,7 @@
 
 .home-default-page {
   text-align: center;
+   width: 100%;
   .app {
     text-align: center;
   }
@@ -9,13 +10,13 @@
   .app-logo {
     transform: scaleX(-1);
     position: absolute;
-    animation: app-logo-spin infinite 2s cubic-bezier(.4,0.05,.7,.4) alternate-reverse;
+    animation: app-logo-spin infinite 0.9s cubic-bezier(.4,0.05,.7,.4) alternate-reverse;
     height: 80px;
   }
 
    .app-logo-fluo {
     position: absolute;
-    animation: app-logo-spin-fluo infinite 2.5s cubic-bezier(.4,0.04,.7,.4) alternate-reverse;
+    animation: app-logo-spin-fluo infinite 0.6s cubic-bezier(.4,0.04,.7,.4) alternate-reverse;
     height: 80px;
     
   }
@@ -26,13 +27,13 @@
     left: 0px;
     top: 0px;
     opacity: 0.08;
-    height: 190px;
+    height: 80px;
   }
 
   .app-header {
     background-color: #222;
     width: 100%;
-    height: 150px;
+    height: 100px;
     padding: 20px;
     color: white;
     overflow: hidden;
@@ -83,7 +84,7 @@
   
        from { transform: translate3d(150px, 0, 0);
                }
-      to   { transform: translate3d(150px, 100px,0); 
+      to   { transform: translate3d(150px, 50px,0); 
               }
     
    
@@ -91,7 +92,7 @@
  @keyframes app-logo-spin-fluo {
   
        from { transform: translate3d(-250px, 0, 0);     }
-      to   { transform: translate3d(-250px, 100px, 0); }
+      to   { transform: translate3d(-250px, 50px, 0); }
     
    
   }

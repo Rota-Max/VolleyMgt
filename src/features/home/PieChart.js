@@ -30,6 +30,7 @@ export class PieChart extends Component {
             is3D: true,
             colors: getColorSet(this.props.setType),
             legend: myLegenda,
+            pieSliceTextStyle: {color: 'black'},
           }}
          
         />
@@ -38,43 +39,6 @@ export class PieChart extends Component {
   }
 }
 
-function getPieData(IdSoggetto,statistiche,Type){
-
-    var filter = "IdSoggetto ="+IdSoggetto;
-    var sArray = [['key','value']];
-    if (statistiche  && IdSoggetto)
-    {
-
-       var newArray = [];
-
-       if (IdSoggetto != "0"){
-         newArray = statistiche.filter(function (el) {
-            return el.IdSoggetto == IdSoggetto ;
-          });
-       }
-       else
-       {
-         newArray = statistiche;
-       }
-
-        var APP = 0,AP= 0,AN =0,ANN=0;
-
-        newArray.forEach(function (arrayItem) {
-          APP = Number(arrayItem.APP) + APP;
-           AP = Number(arrayItem.AP) + AP;
-            AN = Number(arrayItem.APP) + AN;
-             ANN = Number(arrayItem.APP) + ANN;
-            
-        });
-
-        sArray.push(['APP',APP]);
-        sArray.push(['AP',AP]);
-        sArray.push(['AN',AN]);
-        sArray.push(['ANN',ANN]);
-
-    }
-    return sArray;
-}
 
 function getColorSet(setType){
  

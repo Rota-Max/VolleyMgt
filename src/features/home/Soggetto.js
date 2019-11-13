@@ -29,8 +29,14 @@ export class Soggetto extends Component {
     arrow: faAngleDown
   };
 
-  onStart = () => {
+  onStart = (e) => {
     this.setState({activeDrags: ++this.state.activeDrags});
+    let elems = document.getElementsByClassName('react-draggable');
+    for(let i = 0; i < elems.length; i++) {
+      elems[i].style.zIndex = 1;
+      e.currentTarget.style.zIndex = 2;
+  }
+
   };
 
   onStop = () => {
@@ -50,27 +56,76 @@ export class Soggetto extends Component {
   const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
   const { height,arrow } = this.state;
 
+ let sArrayA = [['key','value']];
+    let sArrayR = [['key','value']];
+    let sArrayB = [['key','value']];
 
-    return (
-  <Draggable  {...dragHandlers}>
-      <div className="home-soggetto" id={"pnlSoggetto" + this.props.key}>
+     if (this.props && this.props.AllData)
+    {
+        var newArray = this.props.AllData;
+        var APP = 0,AP= 0,AN =0,ANN=0;
+        var RPP = 0,RP= 0,RN =0,RNN=0;
+        var BPP = 0,BP= 0,BN =0,BNN=0;
 
-        <div className="home-soggettoheader" id={"pnlSoggettoheader" + this.props.key}>{this.props.nome + ' ' + this.props.cognome}   
-         <div className="iconStyle">
-           <FontAwesomeIcon icon={arrow} onClick={ this.onOpenPanel } />
-         </div>
-        </div>
-        <AnimateHeight
-             duration= {500}
-              height= { height }
-        >
-          <PieChart title="Attacco" IdSoggetto={this.props.key} setType="1"/>
-          <PieChart title="Ricezione" IdSoggetto={this.props.key} setType="2"/>
-          <PieChart title="Battuta" IdSoggetto={this.props.key} setType="3"/>
-        </AnimateHeight>
-      </div>
-     </Draggable>
-    );
+        newArray.forEach(function (arrayItem) {
+          APP = Number(arrayItem.APP) + APP;
+          AP = Number(arrayItem.AP) + AP;
+          AN = Number(arrayItem.APP) + AN;
+          ANN = Number(arrayItem.APP) + ANN;
+          RPP = Number(arrayItem.RPP) + RPP;
+          RP = Number(arrayItem.RP) + RP;
+          RN = Number(arrayItem.RN) + RN;
+          RNN = Number(arrayItem.RNN) + RNN;
+          BPP = Number(arrayItem.BPP) + BPP;
+          BP = Number(arrayItem.BP) + BP;
+          BN = Number(arrayItem.BN) + BN;
+          BNN = Number(arrayItem.BNN) + BNN;
+            
+        });
+
+        if (APP>0) sArrayA.push(['Punto',APP]);
+        if (AP>0) sArrayA.push(['Efficace',AP]);
+        if (AN>0) sArrayA.push(['Non Efficace',AN]);
+        if (ANN>0) sArrayA.push(['Errore punto',ANN]);
+        if (RPP>0) sArrayR.push(['Perfetta',RPP]);
+        if (RP>0) sArrayR.push(['Ricostruita',RP]);
+        if (RN>0) sArrayR.push(['Non Ricostruita',RN]);
+        if (RNN>0) sArrayR.push(['Errore punto',RNN]);
+        if (BPP>0) sArrayB.push(['Punto',BPP]);
+        if (BP>0) sArrayB.push(['Efficace',BP]);
+        if (BN>0) sArrayB.push(['Non Efficace',BN]);
+        if (BNN>0) sArrayB.push(['Errore punto',BNN]);
+
+    }
+
+    if (sArrayA.length > 1 || sArrayB.length > 1|| sArrayR.length > 1) {
+
+        return (
+          
+      <Draggable  {...dragHandlers}>
+          <div className="home-soggetto" id={"pnlSoggetto" + this.props.key}>
+
+            <div className="home-soggettoheader" id={"pnlSoggettoheader" + this.props.key}>{this.props.nome + ' ' + this.props.cognome}   
+            <div className="iconStyle">
+              <FontAwesomeIcon icon={arrow} onClick={ this.onOpenPanel } />
+            </div>
+            </div>
+            <AnimateHeight
+                duration= {500}
+                  height= { height }
+            >
+              <PieChart title="Attacco" IdSoggetto={this.props.key} setType="1" data={sArrayA}/>
+              <PieChart title="Ricezione" IdSoggetto={this.props.key} setType="2" data={sArrayR}/>
+              <PieChart title="Battuta" IdSoggetto={this.props.key} setType="3" data={sArrayB}/>
+            </AnimateHeight>
+          </div>
+        </Draggable>
+        );
+    }
+    else{
+      return <div />
+    }
+    
   }
 }
 
