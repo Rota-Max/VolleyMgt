@@ -32,7 +32,7 @@ export class DefaultPage extends Component {
           <img src={volleyLogo} className="app-logo" alt="logo" />
           <img src={volleyLogoFluo} className="app-logo-fluo" alt="logo-Fluo"  />
           <img src={rekitLogo} className="rekit-logo" alt="logo" />
-          <h1 className="app-title">Volley Management</h1>
+          <h1 className="app-title">Volley pippo Management</h1>
           
         </header>
         <div className="app-intro">

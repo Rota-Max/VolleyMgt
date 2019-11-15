@@ -30,7 +30,7 @@ export class PieChart extends Component {
             is3D: true,
             colors: getColorSet(this.props.setType),
             legend: myLegenda,
-            pieSliceTextStyle: {color: 'black'},
+            pieSliceTextStyle: {color: 'white'},
           }}
          
         />
