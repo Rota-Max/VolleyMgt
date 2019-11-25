@@ -30,8 +30,8 @@ export class AllStatistic extends Component {
         newArray.forEach(function (arrayItem) {
           APP = Number(arrayItem.APP) + APP;
           AP = Number(arrayItem.AP) + AP;
-          AN = Number(arrayItem.APP) + AN;
-          ANN = Number(arrayItem.APP) + ANN;
+          AN = Number(arrayItem.AN) + AN;
+          ANN = Number(arrayItem.ANN) + ANN;
           RPP = Number(arrayItem.RPP) + RPP;
           RP = Number(arrayItem.RP) + RP;
           RN = Number(arrayItem.RN) + RN;

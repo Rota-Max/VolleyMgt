@@ -5,3 +5,5 @@ export { default as SidePanel } from './SidePanel';
 export { default as CenterPanel } from './CenterPanel';
 export { default as PieChart } from './PieChart';
 export { default as AllStatistic } from './AllStatistic';
+export { default as AddStatistic } from './AddStatistic';
+export { default as AddMatch } from './AddMatch';
