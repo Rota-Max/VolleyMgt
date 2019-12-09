@@ -1,0 +1,6 @@
+
+function CheckTopPlayer()
+{
+  return null;
+  
+}

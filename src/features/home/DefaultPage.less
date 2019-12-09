@@ -1,0 +1,106 @@
+@import '../../styles/mixins';
+
+.home-default-page {
+  text-align: center;
+   width: 100%;
+  .app {
+    text-align: center;
+  }
+
+  .app-logo {
+    transform: scaleX(-1);
+    position: absolute;
+    animation: app-logo-spin infinite 0.9s cubic-bezier(.4,0.05,.7,.4) alternate-reverse;
+    height: 80px;
+  }
+
+   .app-logo-fluo {
+    position: absolute;
+    animation: app-logo-spin-fluo infinite 0.6s cubic-bezier(.4,0.04,.7,.4) alternate-reverse;
+    height: 80px;
+    
+  }
+
+  .app-menu-buttons{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  .rekit-logo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0.08;
+    height: 80px;
+  }
+
+  .app-header {
+    background-color: #222;
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    color: white;
+    overflow: hidden;
+    position: relative;
+    margin: 1em auto;
+  }
+  
+  .app-title {
+    font-size: 1.5em;
+  }
+
+  .app-intro {
+    font-size: large;
+  }
+
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    margin-top: 20px;
+  }
+  li {
+    margin-top: 10px;
+  }
+
+  a {
+    color: #0288d1;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p.memo {
+    width: 500px;
+    color: #999;
+    font-size: 12px;
+    line-height: 150%;
+    margin: auto;
+  }
+
+
+  @keyframes app-logo-spin {
+  
+       from { transform: translate3d(150px, 0, 0);
+               }
+      to   { transform: translate3d(150px, 50px,0); 
+              }
+    
+   
+  }
+ @keyframes app-logo-spin-fluo {
+  
+       from { transform: translate3d(-250px, 0, 0);     }
+      to   { transform: translate3d(-250px, 50px, 0); }
+    
+   
+  }
+ 
+
+}
